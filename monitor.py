@@ -1,12 +1,14 @@
+# Import tkinter suite needed for the GUI generation
 from tkinter import messagebox
 from tkinter import Label, BooleanVar, Checkbutton, LabelFrame
 from tkinter import Scale
 from tkinter import Tk
 import subprocess
 import os
+# Import the time module for adding delays.
 import time
 
-
+# Function to apply the brightness settings to the selected monitors.
 def apply():
     from main import brightness_scale
     brightness_var = brightness_scale.get()
@@ -33,6 +35,7 @@ def apply():
                 subprocess.run(cmd, shell=True)
     messagebox.showinfo("Success", "Brightness adjusted successfully.")
 
+# Function to return a dictionary of available monitors.
 def get_available_monitors() -> dict:
     time.sleep(5) # Add a 10 second delay
     monitor_dict = {}
@@ -54,6 +57,7 @@ def get_available_monitors() -> dict:
         monitor_dict["No Monitors Detected"] = None
     return monitor_dict
 
+# Function to adjust brightness of a single monitor.
 def adjust_brightness(monitor, value):
     try:
         os.system(f"ddcutil setvcp 10 {value} -d {monitor}")
@@ -61,6 +65,7 @@ def adjust_brightness(monitor, value):
     except:
         return False
 
+# Function to adjust brightness for all monitors in the monitor_dict.
 def adjust_brightness_all(monitor_dict, value, problem_checkbox):
     problem = False
     for monitor in monitor_dict:
@@ -72,7 +77,7 @@ def adjust_brightness_all(monitor_dict, value, problem_checkbox):
                 adjust_brightness_all(monitor_dict, value, False)
     return not problem
 
-
+# Function to adjust brightness for a single monitor using ddcutil command.
 def adjust_brightness_single(brightness, display):
     try:
         cmd = f"ddcutil setvcp 10 {brightness} -d {display}"
