@@ -1,4 +1,8 @@
 # ddcutil_brightness_adjustment_linux_chatGPT
+
+# UPDATES
+  - added bash script version for terminal usage with no GUI. 
+
 using chatGPT to create a Python GUI for adjusting all monitors brightness using the ddcutil terminal app and also the text below:
 
 Welcome to ddcutil_brightness_adjustment_linux_chatGPT, a simple yet powerful utility for managing your monitor's brightness on Linux systems. This repository is designed to help you easily adjust the brightness of your monitor using DDC/CI (Display Data Channel Command Interface) and the ddcutil command line tool. Our user-friendly interface, powered by OpenAI's ChatGPT, allows you to interact with the utility using natural language commands.
